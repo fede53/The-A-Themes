@@ -32,51 +32,22 @@
  * @type {Object}
  */
 var settings = {
-	// this is the folder where your scss files reside (you can use subfolders)
 	styleSrc: './assets/scss/**/*.{sass,scss}',
-
-	// this is a helper for the soucemaps: make sure it matches the above
 	styleMapRoot: '../scss/',
-
-	// here is where app.css will end up
 	styleDest: './assets/css/',
-
-	// set this to 'webpack' if you want CommonJS-like modules support, leave it to 'js' if all you
-	// need is minification and concatenation
 	jsTasker: 'js',
-
-	// this is the entry js file(s) (the array keys define the output filenames),
-	// it's used only by the 'webpack' task
 	jsEntry: {
 		app: ['./assets/sjs/index.js']
 	},
-
-	// this is the list of files and/or folders where your js source files reside: they will be
-	// minified and concatenated in this order (so put files such as jQuery first).
-	// It's used by the 'js' task
 	jsSrc: [
 		'./node_modules/jquery/dist/jquery.js',
-		'./assets/sjs/libs/**/*.js', // Add libraries and jQuery plugins in this folder
-		'./assets/sjs/main.js', // Put common code in this file
-		'./assets/sjs/**/*.js' // Any other file is automatically concatenated last
+		'./assets/sjs/main.js',
+		'./assets/sjs/**/*.js'
+		//'./assets/sjs/libs/**/*.js',
 	],
-
-	// this is a helper for the soucemaps: make sure it matches the above
 	jsMapRoot: '../sjs/',
-
-	// this is where the files defined in jsEntry will end up
 	jsDest: './assets/js/',
-
-	// here you can tell browserSync which static (PHP, HTML, etc…) files to watch
 	watch: ['*.php','**/*.php'],
-
-	// now you have two choices: either you indicate a folder which will be
-	// considered the document root by the server [docroot], or you can
-	// specify which virtual host domain to proxy in gulpconfig.js (comment this
-	// line and uncomment below to include gulpconfig.js)
-	/*docroot: './dist',*/
-
-	// and finally tell autoprefixer which browsers we care about
 	prefixer: ['> 1%', 'last 2 versions', 'Firefox ESR', 'Opera 12.1', 'IE >= 9']
 };
 
@@ -129,31 +100,6 @@ gulp.task('serve', function(callback) {
 	gulpSequence(['browserSync'], callback);
 });
 
-gulp.task('sass', function() {
-
-	var outputStyle = global.production ? 'compressed' : 'compact';
-	var config = {
-		autoprefixer: { browsers: settings.prefixer },
-		sass: {
-			includePaths: ['./', './node_modules/foundation-sites/scss'],
-			outputStyle: outputStyle
-		}
-	};
-
-	return gulp.src(settings.styleSrc)
-		.pipe(sourcemaps.init())
-		.pipe(sass(config.sass))
-		.on('error', handleErrors)
-		.pipe(autoprefixer(config.autoprefixer))
-		.pipe(sourcemaps.write('./', {
-			includeContent: false,
-			sourceRoot: settings.styleMapRoot
-		}))
-		.pipe(gulp.dest(settings.styleDest))
-		.pipe(browserSync.stream({match: '**/*.css'}));
-
-});
-
 gulp.task('js', function() {
 	gulp.src(settings.jsSrc)
 		.pipe(sourcemaps.init())
@@ -178,18 +124,6 @@ gulp.task('webpack', function(callback) {
 		},
 		module: {
 			loaders: [
-				// #MASONRY - Uncomment here
-				// (https://github.com/desandro/masonry/issues/679)
-				/*{
-					test: /(masonry-layout|isotope-layout|imagesloaded)/,
-					loader: 'imports?define=>false&this=>window'
-				},*/
-				// #JQUERY - Uncomment this
-				// (make '$' and 'jQuery' globals)
-				/*{
-					test: /\/jquery\.js$/,
-					loader: 'expose?$!expose?jQuery'
-				},*/
 				{
 					test: /\.jsx?$/,
 					exclude: /(node_modules)/,
@@ -208,13 +142,6 @@ gulp.task('webpack', function(callback) {
 		resolve: {
 			extensions: ['', '.js', '.jsx'],
 			alias: {
-				// #GSAP - Uncomment here
-				// (needed to have GSAP plugins satisfy their "requires")
-				/*'TweenLite': 'gsap/src/uncompressed/TweenLite',
-				'TweenMax': 'gsap/src/uncompressed/TweenMax'*/
-				// #FOUNDATION - Uncomment here
-				// (needed to have Foundation plugins satisfy their "requires")
-				/*foundation: 'foundation-sites/js/foundation.core'*/
 			}
 		},
 		plugins: [
@@ -274,7 +201,6 @@ gulp.task('watcher', ['browserSync'], function() {
 });
 
 gulp.task('browserSync', function() {
-
 	var config = {
 		open: global.open || false,
 		files: settings.watch
