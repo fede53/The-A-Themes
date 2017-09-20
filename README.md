@@ -1,2 +1,1 @@
-# The-A-Themes
-Starting Theme
+# The A-Themes

@@ -1,0 +1,47 @@
+{
+  "name": "The A-Themes",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fede53/The-A-Themes.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fede53/The-A-Themes/issues"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.18.5",
+    "exports-loader": "^0.6.3",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-notify": "^2.2.0",
+    "gulp-sass": "^3.0.0",
+    "gulp-sequence": "^0.4.6",
+    "gulp-sourcemaps": "^2.2.1",
+    "gulp-uglify": "^2.0.0",
+    "gulp-util": "^3.0.7",
+    "gulp-watch": "^4.3.11",
+    "imports-loader": "^0.7.0",
+    "node-sass": "^4.0.0",
+    "webpack": "^1.14.0",
+    "whatwg-fetch": "^2.0.1"
+  },
+  "dependencies": {
+    "jquery": "^3.0.0",
+    "jquery-ui": "latest",
+    "fontawesome": "latest",
+    "simple-line-icons": "latest",
+    "swiper": "latest",
+    "slick-carousel": "latest",
+    "photoswipe": "latest"
+
+  },
+  "homepage": "https://github.com/fede53/The-A-Themes#readme"
+}
