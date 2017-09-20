@@ -112,7 +112,35 @@ gulp.task('js', function() {
 		}))
 		.pipe(gulp.dest(settings.jsDest));
 	browserSync.reload();
-})
+});
+
+
+gulp.task('sass', function() {
+
+	var outputStyle = global.production ? 'compressed' : 'compact';
+	var config = {
+		autoprefixer: { browsers: settings.prefixer },
+		sass: {
+			includePaths: ['./', './node_modules/foundation-sites/scss'],
+			outputStyle: outputStyle
+		}
+	};
+
+	return gulp.src(settings.styleSrc)
+		.pipe(sourcemaps.init())
+		.pipe(sass(config.sass))
+		.on('error', handleErrors)
+		.pipe(autoprefixer(config.autoprefixer))
+		.pipe(sourcemaps.write('./', {
+			includeContent: false,
+			sourceRoot: settings.styleMapRoot
+		}))
+		.pipe(gulp.dest(settings.styleDest))
+		.pipe(browserSync.stream({match: '**/*.css'}));
+
+});
+
+
 
 gulp.task('webpack', function(callback) {
 
