@@ -39,9 +39,10 @@
     "fontawesome": "latest",
     "simple-line-icons": "latest",
     "swiper": "latest",
-    "slick-carousel": "latest",
+    "slick-carousel": "latest", 
     "photoswipe": "latest",
-    "fullpage.js": "latest"
+    "fullpage.js": "latest",
+    "scrollmagic": "latest"
 
   },
   "homepage": "https://github.com/fede53/The-A-Themes#readme"
