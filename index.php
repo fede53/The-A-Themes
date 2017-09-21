@@ -7,6 +7,9 @@
     <script src="assets/js/app.js"></script>
   </head>
   <body>
-    <h1>Ciao Mondo</h1>
+
+    <div class="clip-text clip-text_one">Ciao Mondo</div>
+
+
   </body>
 </html>
