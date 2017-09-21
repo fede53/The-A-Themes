@@ -32,21 +32,21 @@
  * @type {Object}
  */
 var settings = {
-	styleSrc: './assets/scss/**/*.{sass,scss}',
+	styleSrc: './public/assets/scss/**/*.{sass,scss}',
 	styleMapRoot: '../scss/',
-	styleDest: './assets/css/',
+	styleDest: './public/assets/css/',
 	jsTasker: 'js',
 	jsEntry: {
-		app: ['./assets/sjs/index.js']
+		app: ['./public/assets/sjs/index.js']
 	},
 	jsSrc: [
 		'./node_modules/jquery/dist/jquery.js',
-		'./assets/sjs/main.js',
-		'./assets/sjs/**/*.js'
-		//'./assets/sjs/libs/**/*.js',
+		'./public/assets/sjs/main.js',
+		'./public/assets/sjs/**/*.js'
+		//'./public/assets/sjs/libs/**/*.js',
 	],
 	jsMapRoot: '../sjs/',
-	jsDest: './assets/js/',
+	jsDest: './public/assets/js/',
 	watch: ['*.php','**/*.php'],
 	prefixer: ['> 1%', 'last 2 versions', 'Firefox ESR', 'Opera 12.1', 'IE >= 9']
 };
