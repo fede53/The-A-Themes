@@ -7,6 +7,6 @@
     <script src="assets/js/app.js"></script>
   </head>
   <body>
-    <h1>Ciao Mondo</h1>
+    <h1>Ciao Mondo 2</h1>
   </body>
 </html>
