@@ -28,6 +28,7 @@
     "gulp-uglify": "^2.0.0",
     "gulp-util": "^3.0.7",
     "gulp-watch": "^4.3.11",
+    "gulp-minify-css": "latest",
     "imports-loader": "^0.7.0",
     "node-sass": "^4.0.0",
     "webpack": "^1.14.0",
@@ -36,13 +37,17 @@
   "dependencies": {
     "jquery": "^3.0.0",
     "jquery-ui": "latest",
+    "jquery-ui-dist": "latest",
+    "jquery-ui-sass": "latest",
+    "reset-css": "latest",
     "fontawesome": "latest",
     "simple-line-icons": "latest",
     "swiper": "latest",
-    "slick-carousel": "latest", 
+    "slick-carousel": "latest",
     "photoswipe": "latest",
     "fullpage.js": "latest",
-    "scrollmagic": "latest"
+    "scrollmagic": "latest",
+    "jquery.easing": "latest"
 
   },
   "homepage": "https://github.com/fede53/The-A-Themes#readme"

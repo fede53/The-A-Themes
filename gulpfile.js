@@ -40,7 +40,11 @@ var settings = {
 		app: ['./public/assets/sjs/index.js']
 	},
 	jsSrc: [
-		'./node_modules/jquery/dist/jquery.js',
+		'./node_modules/jquery-ui-dist/external/jquery/jquery.js',
+		'./node_modules/jquery-ui-dist/jquery-ui.min.js',
+		'./node_modules/jquery.easing/jquery.easing.js',
+		'./node_modules/fullpage.js/vendors/scrolloverflow.min.js',
+		'./node_modules/fullpage.js/dist/jquery.fullpage.js',
 		'./public/assets/sjs/main.js',
 		'./public/assets/sjs/**/*.js'
 		//'./public/assets/sjs/libs/**/*.js',
@@ -75,6 +79,7 @@ var webpack      = require('webpack');
 var browserSync  = require('browser-sync');
 var concat       = require('gulp-concat');
 var uglify       = require('gulp-uglify');
+var minifyCSS    = require('gulp-minify-css');
 
 gulp.task('default', function(callback) {
 	global.watch = true;
@@ -131,10 +136,12 @@ gulp.task('sass', function() {
 		.pipe(sass(config.sass))
 		.on('error', handleErrors)
 		.pipe(autoprefixer(config.autoprefixer))
+
 		.pipe(sourcemaps.write('./', {
 			includeContent: false,
 			sourceRoot: settings.styleMapRoot
 		}))
+		.pipe(minifyCSS())
 		.pipe(gulp.dest(settings.styleDest))
 		.pipe(browserSync.stream({match: '**/*.css'}));
 
